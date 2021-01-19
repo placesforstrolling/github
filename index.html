@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"
+        integrity="sha512-zT3zHcFYbQwjHdKjCu6OMmETx8fJA9S7E6W7kBeFxultf75OPTYUJigEKX58qgyQMi1m1EgenfjMXlRZG8BXaw=="
+        crossorigin="anonymous"></script>
+    <title>Github</title>
+</head>
+
+<body>
+
+    <section class="spa">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Поиск по пользователям</h1>
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping">@</span>
+                        <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                            aria-describedby="addon-wrapping">
+                        <button class="btn btn-outline-secondary search" type="button" id="button-addon2">Поиск</button>
+                    </div>
+                    <div class="col-12">
+                        <div class="user">
+                            <div id="user">
+
+                            </div>
+                            <div class="repos" id="repos">
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <script src="./js/script.js"></script>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="./js/view.js"></script>
+    <script id="userTemplate" type="text/template">
+        <img src="{{avatar_url}}" class="avatar"></img>
+            <a href="#{{login}}" class="url">{{name}}</a>    
+   </script>
+    <script id="reposTemplate" type="text/template">
+
+        <div class="reps">
+        <p>Последние 5 репозиториев:</p>
+        <a class="rep" href="#{{0.full_name}}">{{0.name}}</a>
+        <a class="rep" href="#{{1.full_name}}">{{1.name}}</a>
+        <a class="rep" href="#{{2.full_name}}">{{2.name}}</a>
+        <a class="rep" href="#{{3.full_name}}">{{3.name}}</a>
+        <a class="rep" href="#{{4.full_name}}">{{4.name}}</a>
+    </div>
+</script>
+    <script id="commitTemplate" type="text/template">
+        <p>Коммиты:</p>
+            {{#each this}}
+    <a href="{{html_url}}"> Коммит {{@index}}  </h1>
+    {{/each}}
+    </script>
+
+    <script id="contrTemplate" type="text/template">
+
+        <p>Контрибьютеры:<button class="btn all_contr">Все</button></p> 
+
+{{#each this}}
+
+<a class="contributers" href="{{html_url}}"> {{@index}}: {{login}} </h1>
+
+ {{/each}}
+    </script>
+    </div>
+</body>
+
+</html>
